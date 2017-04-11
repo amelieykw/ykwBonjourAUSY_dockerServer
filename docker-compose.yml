@@ -1,0 +1,21 @@
+mysql:
+  environment:
+    - MYSQL_ROOT_PASSWORD=admin
+    - MYSQL_DATABASE=bonjourausy
+  image: 'amelieykw/bonjourausy_mysql:latest'
+  volumes:
+    - /var/lib/mysql
+php:
+  image: 'amelieykw/bonjourausy_app:latest'
+  links:
+    - mysql
+  volumes:
+    - /var/www/html
+webnginx:
+  image: 'amelieykw/bonjourausy_nginx:latest'
+  links:
+    - php
+  ports:
+    - '8080:80'
+  volumes_from:
+    - php

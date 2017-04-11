@@ -1,0 +1,26 @@
+mysql:
+  environment:
+    - MYSQL_ROOT_PASSWORD=admin
+  image: 'amelieykw/bonjourausy_mysql:latest'
+  restart: always
+  volumes:
+    - /var/lib/mysql
+php:
+  autoredeploy: true
+  image: 'amelieykw/bonjourausy_app:latest'
+  links:
+    - mysql
+  restart: always
+  volumes:
+    - /var/www/html
+webnginx:
+  autoredeploy: true
+  image: 'amelieykw/bonjourausy_nginx:latest'
+  links:
+    - php
+  ports:
+    - '80:80'
+  restart: always
+  sequential_deployment: true
+  volumes_from:
+    - php
