@@ -1,4 +1,4 @@
-<?php
+ <?php
 	include("../connect.php");
 
 	$selected_site_libelle = $_GET['sitelibelle'];

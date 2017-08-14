@@ -4,7 +4,7 @@ mysql:
     - MYSQL_ROOT_PASSWORD=admin
   image: 'bonjourausy_mysql:latest'
   volumes:
-    - /var/lib/mysql:/var/lib/mysql
+    - /var/lib/mysql
 php:
   image: 'bonjourausy_app:latest'
   links:

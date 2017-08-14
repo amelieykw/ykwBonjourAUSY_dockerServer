@@ -1,4 +1,4 @@
-TRUNCATE contact;
+# TRUNCATE contact;
 
 INSERT INTO contact 
 (Nom, Prenom, Fonction, TelMobile, email, SiteId, N1Id, N2Id, DateCreation, DateModification) 
